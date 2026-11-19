@@ -62,7 +62,7 @@ import { X } from 'lucide-react';
       { text: `> uptime: ${ageInYears}y | deployed: ${expInYears}y (active)`, color: "text-blue-400" },
       { text: "> status: online", color: "text-green-400" },
       { text: "> hello - i'm Anirudh", color: "text-white font-bold" },
-      { text: "> UI/UX Designer | Data Scientist | Solutions Architect | FullStack Developer", color: "text-gray-300" },
+      { text: "> Full-Stack Developer | Data & Analytics | AI-Driven Systems", color: "text-gray-300" },
       { text: "> type 'help' to see available commands...", color: "text-cyan-400 animate-pulse" },
     ];
   

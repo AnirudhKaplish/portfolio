@@ -1,21 +1,21 @@
 export const PROFILE = {
   name: "Anirudh Kaplish",
   title: "Full-Stack Developer",
-  titles: ["UI/UX DESIGNER", "DATA SCIENTIST", "SOLUTIONS ARCHITECT", "FULLSTACK DEVELOPER"],
-  bio: "Full-stack developer building scalable React and Node.js applications, with a growing focus on AI-powered products.",
+  titles: ["FULL-STACK DEVELOPER", "DATA & ANALYTICS", "AI-DRIVEN SYSTEMS"],
+  bio: "Computer Science undergraduate building full-stack and data-driven products with React, Node.js and SQL, with a growing focus on AI.",
   social: {
     github: "https://github.com/AnirudhKaplish",
     linkedin: "https://www.linkedin.com/in/anirudhkaplish/",
     instagram: "https://www.instagram.com/_akneerude/",
     email: "mailto:anirudh23.dev@gmail.com"
   },
-  about: "I am a passionate Full-Stack Developer with a growing interest in AI and intelligent systems. I specialize in building scalable web applications using modern technologies like React, Node.js, and MongoDB. I enjoy bridging clean UI/UX with efficient backend systems to create impactful, real-world solutions. Continuously learning and experimenting, I aim to evolve into an engineer who can design, build, and scale end-to-end systems.",
+  about: "I am a Computer Science undergraduate at VIT Chennai (CGPA 8.09) who builds full-stack applications and data pipelines. I design relational schemas, automate data ingestion, and ship React and Node.js products, and I have applied AI to personalization and screening problems. I am looking for analytics, consulting and software roles where careful data work and clean engineering both matter.",
   stats: [
-    { label: "Projects Built", value: "4+" },
-    { label: "Full-Stack Apps", value: "3+" },
-    { label: "DSA Problems", value: "150+" },
-    { label: "Leadership Roles", value: "1" },
-    { label: "Coffee/Day", value: "∞" }
+    { label: "Projects Built", value: "12+" },
+    { label: "Internships", value: "3" },
+    { label: "DSA Problems", value: "170+" },
+    { label: "CGPA", value: "8.09" },
+    { label: "Leadership Roles", value: "1" }
   ]
 };
 
@@ -65,163 +65,396 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
-    id: "p1",
-    title: "Re-Dish – Food Waste Management System",
-    desc: "A full-stack platform connecting food donors with NGOs to reduce food wastage through real-time listings and claim workflows.",
-    details: [
-      "Designed donor and NGO dashboards with real-time food listing and claim functionality.",
-      "Implemented role-based authentication for secure access and workflow separation.",
-      "Built responsive UI ensuring seamless usage across devices.",
-      "Optimized backend APIs for efficient data handling and user interactions."
+    "id": "p1",
+    "title": "SwiftMile – Last-Mile Delivery Management Platform",
+    "desc": "A Next.js logistics platform for Indian delivery networks: dynamic rate calculation, zone-level routing, courier dispatch and role-based workspaces for customers, agents and admins.",
+    "details": [
+      "Built a dynamic-pricing and zone-routing engine that uses delivery-zone and demand data to drive fleet-assignment decisions.",
+      "Modelled the order lifecycle and consignment tracking with Prisma, using metric units and INR billing.",
+      "Separate customer, agent and admin workspaces enforced with role-based access control.",
+      "Documented the architecture in a written system-design file."
     ],
-    tech: ["HTML", "CSS", "JavaScript", "Node.js", "Go"],
-    domain: "Social Impact / Full Stack",
-    github: "https://github.com/AnirudhKaplish/Re-Dish",
-    featured: true,
-    type: "product"
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "RBAC"
+    ],
+    "domain": "Logistics / Full Stack",
+    "featured": true,
+    "type": "product",
+    "image": "projects/swiftmile.webp",
+    "github": "https://github.com/AnirudhKaplish/swiftmile-last-mile-delivery-platform"
   },
   {
-    id: "p2",
-    title: "Campus Hiring Portal",
-    desc: "A full-stack recruitment platform streamlining job postings, applications, and recruiter approvals within a campus ecosystem.",
-    details: [
-      "Developed role-based authentication system for students, recruiters, and admins.",
-      "Built dynamic dashboards for job listings and application tracking.",
-      "Reduced manual coordination by digitizing the hiring workflow.",
-      "Designed scalable backend using Node.js and MongoDB."
+    "id": "p2",
+    "title": "VoiceCart – Voice Command Shopping Assistant",
+    "desc": "A voice-first grocery list app: say what you need and it parses items, quantities and categories, then suggests replenishments from your history.",
+    "details": [
+      "Natural-language command parsing for adding, removing and changing items, with multi-item commands.",
+      "Smart suggestions based on weekly routine and seasonal items, plus history and reorder.",
+      "Falls back to typed commands where the Web Speech API is unavailable.",
+      "Covered by an automated test suite (28 passing tests)."
     ],
-    tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB"],
-    domain: "EdTech / Full Stack",
-    github: "https://github.com/AnirudhKaplish/CampusHire-Portal",
-    featured: true,
-    type: "product"
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Web Speech API",
+      "Vitest"
+    ],
+    "domain": "Consumer / AI",
+    "featured": true,
+    "type": "product",
+    "image": "projects/voicecart.webp",
+    "github": "https://github.com/AnirudhKaplish/VoiceCart"
   },
   {
-    id: "p3",
-    title: "Dhanvantri – Healthcare Management System",
-    desc: "A digital healthcare platform for managing patient records, appointments, and service coordination.",
-    details: [
-      "Implemented structured data storage for efficient medical record management.",
-      "Designed intuitive UI workflows to improve usability for healthcare staff.",
-      "Developed backend APIs for handling patient and appointment data.",
-      "Focused on clean architecture for maintainability and scalability."
+    "id": "p3",
+    "title": "SAFE-MIND – Consent-Gated Depression Risk Screening",
+    "desc": "A research framework that screens a person's own posts for depression risk only with their permission, using a smart contract for consent and two models that must agree before a result is shown.",
+    "details": [
+      "A smart contract records consent and blocks all processing the moment it is revoked.",
+      "A TF-IDF + Logistic Regression baseline and a fine-tuned BERT model are combined; disagreements are flagged for human review.",
+      "Explanations show which words pushed the result either way, using LIME and exact baseline contributions.",
+      "Flask clinician dashboard with a robot digital-twin integration."
     ],
-    tech: ["HTML", "CSS", "JavaScript", "Backend APIs", "Database"],
-    domain: "HealthTech",
-    featured: false,
-    type: "product"
+    "tech": [
+      "Python",
+      "BERT",
+      "scikit-learn",
+      "LIME",
+      "Solidity",
+      "Flask"
+    ],
+    "domain": "AI / Privacy",
+    "featured": true,
+    "type": "research",
+    "image": "projects/safemind.webp",
+    "github": "https://github.com/AnirudhKaplish/safe-mind"
   },
   {
-    id: "p4",
-    title: "Authentication & Dashboard System",
-    desc: "A secure web application module implementing JWT-based authentication and role-based access control.",
-    details: [
-      "Built JWT authentication system with protected routes and middleware.",
-      "Implemented role-based access control for different user types.",
-      "Integrated frontend and backend for secure session handling.",
-      "Applied best practices for API security and user data protection."
+    "id": "p4",
+    "title": "GymPass Prime – One Pass, Every Gym",
+    "desc": "A gym-membership platform where members use QR access keys, buy hourly or time-based passes and find nearby gyms, while owners approve cash or UPI payments.",
+    "details": [
+      "QR sign-in and sign-out that counts only the hours actually spent inside.",
+      "Prepaid hourly, monthly and yearly passes with expiry reminders.",
+      "Go backend with GORM, a Next.js 16 / React 19 frontend and a mobile client.",
+      "Docker Compose setup and a deployment guide."
     ],
-    tech: ["Node.js", "Express.js", "JWT", "React"],
-    domain: "Backend / Security",
-    featured: false,
-    type: "module"
+    "tech": [
+      "Go",
+      "Next.js",
+      "React",
+      "GORM",
+      "SQLite",
+      "Docker"
+    ],
+    "domain": "Fitness / Full Stack",
+    "featured": true,
+    "type": "product",
+    "image": "projects/gympass.webp",
+    "github": "https://github.com/AnirudhKaplish/GymPass"
+  },
+  {
+    "id": "p5",
+    "title": "Postboard – Community Board",
+    "desc": "A small full-stack community board where people sign up, publish posts, like them and comment. Runs on SQLite locally and switches to Postgres with one environment variable.",
+    "details": [
+      "React 19 frontend with Express 5 and Sequelize on the backend, using JWT authentication.",
+      "One Express app that runs locally, in Docker and as a single Vercel serverless function.",
+      "Continuous integration, a written PRD and a case study documenting the trade-offs.",
+      "Seed script with demo users and posts for a one-command start."
+    ],
+    "tech": [
+      "React",
+      "Express",
+      "Sequelize",
+      "JWT",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "domain": "Social / Full Stack",
+    "featured": true,
+    "type": "product",
+    "image": "projects/postboard.webp",
+    "github": "https://github.com/AnirudhKaplish/postboard"
+  },
+  {
+    "id": "p6",
+    "title": "QRify – Custom QR Code Generator",
+    "desc": "A fast, no-signup QR code generator with custom colours, size, caption text and logo upload, plus a night mode. Live on GitHub Pages.",
+    "details": [
+      "Built with Next.js and React, exported as a static site and deployed with GitHub Actions.",
+      "Live preview updates as you type, with adjustable size and separate QR, background and text colours.",
+      "Supports logo upload and a caption under the code, and downloads the finished image."
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "domain": "Utility / Frontend",
+    "featured": false,
+    "type": "product",
+    "image": "projects/qrify.webp",
+    "github": "https://github.com/AnirudhKaplish/qrify",
+    "link": "https://anirudhkaplish.github.io/qrify/"
+  },
+  {
+    "id": "p7",
+    "title": "Campus Hiring Portal (CPMS)",
+    "desc": "A full-stack placement management system for students, placement officers and management to run job postings, applications and recruiter approvals.",
+    "details": [
+      "Role-based authentication for students, recruiters and admins.",
+      "Dashboards for job listings and real-time application-status tracking, reducing manual coordination.",
+      "REST APIs and MongoDB schemas for postings, applications and approval workflows."
+    ],
+    "tech": [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS"
+    ],
+    "domain": "EdTech / Full Stack",
+    "featured": false,
+    "type": "product",
+    "image": "projects/campushire.webp",
+    "github": "https://github.com/AnirudhKaplish/CampusHire-Portal"
+  },
+  {
+    "id": "p8",
+    "title": "Re-Dish – Food Waste Management",
+    "desc": "A platform connecting food donors with NGOs to cut food waste, with listing and claim flows and a token reward for donors.",
+    "details": [
+      "Donor and NGO flows for listing surplus food and claiming it.",
+      "Role-based sign-in to keep the two workflows separate.",
+      "Responsive Next.js interface built for use on any device."
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Node.js"
+    ],
+    "domain": "Social Impact / Full Stack",
+    "featured": false,
+    "type": "product",
+    "image": "projects/redish.webp",
+    "github": "https://github.com/AnirudhKaplish/Re-Dish"
+  },
+  {
+    "id": "p9",
+    "title": "Annapoorna – Surplus Food Redistribution",
+    "desc": "An early food-waste project that moves surplus food from hotels to NGOs, with donor, NGO and admin pages and a chatbot.",
+    "details": [
+      "Separate donor, NGO, admin and profile pages.",
+      "Chatbot and speech helper for guided donations.",
+      "Built with plain HTML, CSS and JavaScript."
+    ],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "domain": "Social Impact / Frontend",
+    "featured": false,
+    "type": "product",
+    "image": "projects/annapoorna.webp",
+    "github": "https://github.com/AnirudhKaplish/Annapoorna"
+  },
+  {
+    "id": "p10",
+    "title": "QR Code Generator (Flutter)",
+    "desc": "A Material 3 mobile app that creates, styles and saves high-resolution QR codes from any text or URL.",
+    "details": [
+      "Custom dot, eye and background colours.",
+      "Saves the finished QR code as an image.",
+      "Clean Material 3 interface."
+    ],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Material 3"
+    ],
+    "domain": "Mobile / Utility",
+    "featured": false,
+    "type": "module",
+    "image": "projects/qrflutter.webp",
+    "github": "https://github.com/AnirudhKaplish/qr_generator"
+  },
+  {
+    "id": "p11",
+    "title": "PrivGuard – Encrypted VPN Demo",
+    "desc": "A small client and server that send messages over a socket, encrypted with a shared key, to show how a VPN tunnel protects data in transit.",
+    "details": [
+      "Flask web client that encrypts input before sending it.",
+      "Python socket server that decrypts and responds with an encrypted reply.",
+      "Built to learn symmetric encryption with Fernet."
+    ],
+    "tech": [
+      "Python",
+      "Flask",
+      "Sockets",
+      "Cryptography"
+    ],
+    "domain": "Security / Networking",
+    "featured": false,
+    "type": "module",
+    "image": "projects/privguard.webp",
+    "github": "https://github.com/AnirudhKaplish/PrivGuard"
+  },
+  {
+    "id": "p12",
+    "title": "Go To-Do App",
+    "desc": "A task manager with a Go REST API and a plain JavaScript front end: add, edit, delete and complete tasks, drag to reorder, and toggle dark mode.",
+    "details": [
+      "RESTful Go API with persistent task storage.",
+      "Drag-and-drop ordering and a dark mode toggle.",
+      "Plain HTML, CSS and JavaScript front end."
+    ],
+    "tech": [
+      "Go",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "domain": "Productivity / Backend",
+    "featured": false,
+    "type": "module",
+    "image": "projects/todo.webp",
+    "github": "https://github.com/AnirudhKaplish/to-do-list"
+  },
+  {
+    "id": "p13",
+    "title": "Dhanvantri – Healthcare Management System",
+    "desc": "A digital healthcare platform for managing patient records, appointments and service coordination.",
+    "details": [
+      "Structured data storage for medical records.",
+      "Backend APIs for patient and appointment data.",
+      "Interface workflows designed around healthcare staff."
+    ],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Backend APIs",
+      "Database"
+    ],
+    "domain": "HealthTech",
+    "featured": false,
+    "type": "product",
+    "image": "",
+    "github": null
+  },
+  {
+    "id": "p14",
+    "title": "Authentication & Dashboard System",
+    "desc": "A reusable module with JWT authentication, protected routes and role-based access control.",
+    "details": [
+      "JWT authentication with protected routes and middleware.",
+      "Role-based access control for different user types.",
+      "Frontend and backend integrated for secure session handling."
+    ],
+    "tech": [
+      "Node.js",
+      "Express.js",
+      "JWT",
+      "React"
+    ],
+    "domain": "Backend / Security",
+    "featured": false,
+    "type": "module",
+    "image": "",
+    "github": null
   }
 ];
-
-export const EXTRA_PROJECTS = [
-  {
-    id: "p5",
-    title: "QRify – Custom QR Code Generator",
-    desc: "A fast, no-signup QR code generator with custom colours, size, caption text and logo upload, plus a night mode. Live on GitHub Pages.",
-    details: [
-      "Built with Next.js and React, exported as a fully static site and deployed through GitHub Actions.",
-      "Live preview updates as you type, with adjustable QR size and separate QR, background and text colours.",
-      "Supports logo upload and a caption under the code, and exports the finished image."
-    ],
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    domain: "Utility / Frontend",
-    github: "https://github.com/AnirudhKaplish/qrify",
-    link: "https://anirudhkaplish.github.io/qrify/",
-    featured: true,
-    type: "product"
-  }
-];
-
-// Links applied on top of whatever the database returns (matched by title keyword).
-// Projects not listed here keep only the links they already have, minus bare profile links.
-export const PROJECT_LINKS: Record<string, { github?: string; link?: string }> = {
-  "re-dish": { github: "https://github.com/AnirudhKaplish/Re-Dish" },
-  "campus hiring": { github: "https://github.com/AnirudhKaplish/CampusHire-Portal" },
-  "qrify": { github: "https://github.com/AnirudhKaplish/qrify", link: "https://anirudhkaplish.github.io/qrify/" }
-};
 
 export const TIMELINE = [
   {
-    id: "t1",
-    title: "Software Development Engineer Intern",
-    org: "Tez Minds Software Pvt. Ltd.",
-    date: "Jun 2026",
-    desc: `• Designed a relational database schema across five core entities (users, sources, articles, briefs, and feedback) with personalization fields including interests, knowledge level, and topic preferences.
-• Built an automated scheduled source-ingestion pipeline with content normalization, near-duplicate detection, and rule-based topic categorization across multiple external sources.
-• Integrated an AI-powered brief generation agent with a relevance-scoring and personalization engine, connected the pipeline to automated email delivery, and performed end-to-end testing and bug fixes.`,
-    type: "work",
-    side: "right"
+    "id": "t1",
+    "title": "Digital Marketing Intern",
+    "org": "Tez Minds Software Pvt. Ltd.",
+    "date": "Jul 2026 - Present",
+    "desc": "• Conducting market and competitor research for digitalbusinesscard.pro, turning customer and market data into positioning and messaging insights.\n• Tracking campaign and engagement metrics to evaluate performance and guide data-driven decisions on channels and content.",
+    "type": "work",
+    "side": "right"
   },
   {
-    id: "t2",
-    title: "Full Stack Developer Intern",
-    org: "Upkarak Tech Solutions Pvt. Ltd.",
-    date: "Aug 2025 - Oct 2025",
-    desc: `• Built reusable, responsive React.js components using Hooks and state management while designing RESTful Express.js/Node.js APIs for customer dashboards, improving overall application performance.
-• Implemented JWT-based authentication and Role-Based Access Control (RBAC) using custom Express middleware to secure protected API routes across multiple user roles.
-• Developed unit and integration test suites for backend APIs, configured an automated CI pipeline, and containerized the application using Docker for reliable staging deployments.`,
-    type: "work",
-    side: "right"
+    "id": "t2",
+    "title": "SDE Intern",
+    "org": "Tez Minds Software Pvt. Ltd.",
+    "date": "Jun 2026",
+    "desc": "• Designed a relational database schema across 5 entities (users, sources, articles, briefs, feedback) with personalization fields, validated through sample-data query testing.\n• Built an automated, scheduled data-ingestion pipeline with content normalization, near-duplicate detection and rule-based topic categorization across multiple external sources, reducing manual effort through automation.\n• Integrated an AI-powered brief generation agent with a relevance-scoring engine and automated email delivery.",
+    "type": "work",
+    "side": "right"
   },
   {
-    id: "t3",
-    title: "B.Tech in Computer Science",
-    org: "Vellore Institute of Technology, Chennai",
-    date: "2023 - 2027",
-    desc: "Currently pursuing B.Tech in Computer Science with specialization in full-stack development, software engineering, and scalable system design. Current CGPA: 8.09.",
-    type: "education",
-    side: "left"
+    "id": "t3",
+    "title": "Data Analytics Job Simulation",
+    "org": "Deloitte (Forage)",
+    "date": "Mar 2026",
+    "desc": "Completed Deloitte's Data Analytics job simulation covering data analysis and forensic technology.",
+    "type": "certification",
+    "side": "left"
   },
   {
-    id: "t4",
-    title: "General Secretary",
-    org: "Wakhra Punjab, VIT Chennai",
-    date: "2024 - Present",
-    desc: "Leading planning and execution of club initiatives, managing cross-functional teams, coordinating design and content activities, organizing large-scale cultural events, and overseeing social media branding.",
-    type: "leadership",
-    side: "left"
+    "id": "t4",
+    "title": "Full Stack Developer Intern",
+    "org": "Upkarak Tech Solutions Pvt. Ltd.",
+    "date": "Aug 2025 - Oct 2025",
+    "desc": "• Designed and built RESTful API endpoints for a customer dashboard, writing unit and integration tests to ensure data accuracy and reliability.\n• Implemented JWT authentication and role-based access control (RBAC), enforcing access controls across multiple user roles.\n• Configured an automated CI pipeline and containerized the application with Docker for staging deployments.",
+    "type": "work",
+    "side": "right"
   },
   {
-    id: "t5",
-    title: "GenAI Hackathon Participant",
-    org: "Intel × KPR Institute of Engineering & Technology",
-    date: "2024",
-    desc: "Participated in a national-level Generative AI hackathon, collaborating on innovative AI-driven solutions while gaining hands-on experience with emerging technologies.",
-    type: "achievement",
-    side: "right"
+    "id": "t5",
+    "title": "React Frontend Project",
+    "org": "GreatStack",
+    "date": "May 2025",
+    "desc": "Completed a hands-on React frontend project course.",
+    "type": "certification",
+    "side": "left"
   },
   {
-    id: "t6",
-    title: "Full-Stack Projects Development",
-    org: "Personal Projects",
-    date: "2024 - Present",
-    desc: "Developed multiple full-stack applications including Re-Dish, Campus Hiring Portal, and Healthcare Management System using React, Node.js, Express, MongoDB, and modern authentication techniques.",
-    type: "work",
-    side: "right"
+    "id": "t6",
+    "title": "General Secretary",
+    "org": "Wakhra Punjab, VIT Chennai",
+    "date": "2024 - Present",
+    "desc": "Leading planning and execution of club initiatives and cultural events, coordinating design and content teams, and managing multiple events during Vibrance and TechnoVIT, VIT Chennai's flagship cultural and technical fests.",
+    "type": "leadership",
+    "side": "left"
   },
   {
-    id: "t7",
-    title: "Data Structures & Algorithms",
-    org: "LeetCode",
-    date: "2024 - Present",
-    desc: "Solved 150+ coding problems covering arrays, trees, graphs, dynamic programming, greedy algorithms, and advanced data structures to strengthen problem-solving and interview preparation.",
-    type: "achievement",
-    side: "left"
+    "id": "t7",
+    "title": "GenAI Hackathon Participant",
+    "org": "Intel × KPR Institute of Engineering & Technology",
+    "date": "Oct 2024",
+    "desc": "Took part in a national-level Generative AI hackathon, building AI-driven solutions as part of a team.",
+    "type": "achievement",
+    "side": "right"
+  },
+  {
+    "id": "t8",
+    "title": "Data Structures & Algorithms",
+    "org": "LeetCode",
+    "date": "2024 - Present",
+    "desc": "Solved 170+ problems across arrays, trees, graphs, dynamic programming and greedy algorithms.",
+    "type": "achievement",
+    "side": "left"
+  },
+  {
+    "id": "t9",
+    "title": "B.Tech in Computer Science & Engineering",
+    "org": "Vellore Institute of Technology, Chennai",
+    "date": "2023 - 2027",
+    "desc": "Pursuing a B.Tech in Computer Science with a focus on full-stack development, data and software engineering. CGPA: 8.09 / 10.",
+    "type": "education",
+    "side": "left"
   }
 ];
 
@@ -234,62 +467,81 @@ export const PHILOSOPHY = [
 
 export const ROADMAP = [
   {
-    id: "r1",
-    title: "Deploy Full-Stack Projects",
-    date: "2026",
-    desc: "Deploy projects like Re-Dish and Hiring Portal with production-ready architecture and live users.",
-    status: "in-progress"
+    "id": "r1",
+    "title": "Land First Internships",
+    "date": "Aug 2025 - Jun 2026",
+    "desc": "Completed internships at Upkarak Tech Solutions (full stack) and Tez Minds (SDE), then moved into a digital marketing and research role at Tez Minds.",
+    "status": "completed"
   },
   {
-    id: "r2",
-    title: "Crack SDE Internship",
-    date: "2026",
-    desc: "Strengthen DSA and system design to secure internship at a top product-based company.",
-    status: "planned"
+    "id": "r2",
+    "title": "Ship Full-Stack Projects",
+    "date": "2026",
+    "desc": "Built and published SwiftMile, VoiceCart, GymPass and Postboard, and put QRify and this portfolio live on GitHub Pages.",
+    "status": "completed"
   },
   {
-    id: "r3",
-    title: "Build AI-Integrated Project",
-    date: "2026",
-    desc: "Develop a project integrating AI features like recommendation systems or chat-based assistants.",
-    status: "planned"
+    "id": "r3",
+    "title": "Build AI-Integrated Projects",
+    "date": "2026",
+    "desc": "Delivered SAFE-MIND (BERT, LIME and blockchain consent), VoiceCart (voice commands) and an AI brief-generation agent at Tez Minds.",
+    "status": "completed"
   },
   {
-    id: "r4",
-    title: "Open Source Contribution",
-    date: "2026",
-    desc: "Contribute to open-source projects and build a strong GitHub presence.",
-    status: "planned"
+    "id": "r4",
+    "title": "Break Into Data and Analytics Roles",
+    "date": "2026 - 2027",
+    "desc": "Build SQL, Python and dashboard depth, and apply for analytics, consulting and finance-reporting roles ahead of graduation.",
+    "status": "in-progress"
+  },
+  {
+    "id": "r5",
+    "title": "Contribute to Open Source",
+    "date": "2027",
+    "desc": "Make first contributions to open-source projects and build a stronger public GitHub presence.",
+    "status": "planned"
   }
 ];
 
 export const BLOG_POSTS = [
-  { 
-    id: "b1", 
-    title: "Building a Full-Stack Food Waste Management System (Re-Dish)", 
-    date: "Jan 2026", 
-    readTime: "5 min", 
-    desc: "A deep dive into designing a full-stack platform connecting donors and NGOs with role-based authentication and real-time workflows.", 
-    tags: ["Full Stack", "Node.js", "MongoDB"],
-    link: "#" 
+  {
+    "id": "b1",
+    "title": "SAFE-MIND: Consent-Gated, Explainable Depression Screening",
+    "date": "Oct 2026",
+    "readTime": "5 min",
+    "desc": "How a smart contract, two models that must agree and word-level explanations combine into a screening pipeline that stops the moment consent is revoked.",
+    "tags": [
+      "AI",
+      "Privacy",
+      "BERT"
+    ],
+    "link": "https://github.com/AnirudhKaplish/safe-mind#readme"
   },
-  { 
-    id: "b2", 
-    title: "Implementing JWT Authentication in Node.js", 
-    date: "Dec 2025", 
-    readTime: "4 min", 
-    desc: "Step-by-step guide to building secure authentication and role-based access control using JWT and Express middleware.", 
-    tags: ["Backend", "Security", "JWT"],
-    link: "#" 
+  {
+    "id": "b2",
+    "title": "Postboard Case Study: One Express App for Local, Docker and Vercel",
+    "date": "Oct 2026",
+    "readTime": "4 min",
+    "desc": "The trade-offs behind running SQLite locally and Postgres in production, and wrapping an Express app as a single serverless function.",
+    "tags": [
+      "Full Stack",
+      "Express",
+      "Vercel"
+    ],
+    "link": "https://github.com/AnirudhKaplish/postboard/blob/main/docs/CASE_STUDY.md"
   },
-  { 
-    id: "b3", 
-    title: "Designing Scalable Dashboards with React", 
-    date: "Nov 2025", 
-    readTime: "6 min", 
-    desc: "Best practices for building responsive and maintainable dashboards using React and modern UI patterns.", 
-    tags: ["React", "Frontend", "UI/UX"],
-    link: "#" 
+  {
+    "id": "b3",
+    "title": "SwiftMile System Design: Pricing, Zones and Dispatch",
+    "date": "Aug 2026",
+    "readTime": "4 min",
+    "desc": "How rate calculation, zone detection, courier assignment and the order lifecycle fit together in a last-mile delivery platform.",
+    "tags": [
+      "System Design",
+      "Next.js",
+      "Prisma"
+    ],
+    "link": "https://github.com/AnirudhKaplish/swiftmile-last-mile-delivery-platform/blob/main/SYSTEM_DESIGN.md"
   }
 ];
 
