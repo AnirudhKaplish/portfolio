@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { collection, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { db, firebaseReady } from '../lib/firebase';
 import { PROJECTS, SKILLS, TIMELINE, ROADMAP, PHILOSOPHY, BLOG_POSTS, PROFILE, SKILLS_CATEGORIES } from './data/portfolio';
 
 // Generic Hook Factory for Collections
@@ -11,6 +11,7 @@ function useCollectionData(collectionName: string, fallbackData: any[]) {
     const [isFallback, setIsFallback] = useState(true);
 
     useEffect(() => {
+        if (!firebaseReady) { setLoading(false); return; }
         const q = query(collection(db, collectionName), orderBy('order', 'asc'));
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const items: any[] = [];
@@ -64,6 +65,7 @@ export const useProfile = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!firebaseReady) { setLoading(false); return; }
         const unsub = onSnapshot(doc(db, "portfolio", "profile"), (doc) => {
             if (doc.exists()) {
                 // Keep headline, bio and stats in sync with the repo; take the rest (e.g. social links) from the database

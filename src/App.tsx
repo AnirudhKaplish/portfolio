@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Terminal } from 'lucide-react'
 import './index.css'
@@ -28,8 +28,12 @@ const AppContent = () => {
   const [systemState, setSystemState] = useState<'LANDING' | 'BOOTING' | 'ONLINE'>(
     isHome ? 'LANDING' : 'BOOTING'
   );
-  const introSeen = (() => { try { return sessionStorage.getItem('intro-seen') === '1'; } catch { return false; } })();
-  const skipIntro = () => { try { sessionStorage.setItem('intro-seen', '1'); } catch { /* ignore */ } window.location.reload(); };
+  const [introSeen, setIntroSeen] = useState<boolean>(() => { try { return sessionStorage.getItem('intro-seen') === '1'; } catch { return false; } });
+  const skipIntro = () => {
+    try { sessionStorage.setItem('intro-seen', '1'); } catch { /* ignore */ }
+    setIntroSeen(true);
+    setSystemState('ONLINE');
+  };
   const [isResizing, setIsResizing] = useState(false);
   const [adminSection, setAdminSection] = useState<string | null>(null);
 
@@ -118,6 +122,7 @@ const AppContent = () => {
           >
               <div className="w-full h-full max-w-3xl pointer-events-auto relative">
                   <TerminalIntro 
+                    key={introSeen ? 'seen' : 'boot'}
                     onComplete={handleBootComplete} 
                     onAdminMode={handleAdminMode}
                     onMinimize={windowWidth < 1024 && systemState === 'ONLINE' ? () => setMobileTerminalOpen(false) : undefined}
@@ -180,6 +185,7 @@ const AppContent = () => {
                <Route path="/experience" element={<MainLayout showNavbar={true}><Experience /></MainLayout>} />
                <Route path="/blog" element={<MainLayout showNavbar={true}><Blog /></MainLayout>} />
                <Route path="/contact" element={<MainLayout showNavbar={true}><Contact /></MainLayout>} />
+               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         )}
       </AnimatePresence>
