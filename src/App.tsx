@@ -6,6 +6,11 @@ import './index.css'
 import Nav from './components/site/Nav'
 import Footer from './components/site/Footer'
 import Home from './pages/Home'
+import Gateway from './worlds/Gateway'
+import Recruiter from './worlds/Recruiter'
+import Designer from './worlds/Designer'
+import AIEngineer from './worlds/AIEngineer'
+import Analyst from './worlds/Analyst'
 import Post from './pages/Post'
 import TerminalIntro from './components/sections/TerminalIntro'
 import AdminModal from './components/admin/AdminModal'
@@ -13,13 +18,14 @@ const Resume = lazy(() => import('./components/sections/Resume'))
 
 // Old multi-page URLs now point at sections of the single page.
 const LEGACY: Record<string, string> = {
-  '/about': '/#about', '/philosophy': '/#about', '/skills': '/#skills', '/roadmap': '/#roadmap',
-  '/projects': '/#projects', '/achievements': '/#experience', '/experience': '/#experience',
-  '/blog': '/#writing', '/contact': '/#contact',
+  '/about': '/classic#about', '/philosophy': '/classic#about', '/skills': '/classic#skills', '/roadmap': '/classic#roadmap',
+  '/projects': '/classic#projects', '/achievements': '/classic#experience', '/experience': '/classic#experience',
+  '/blog': '/classic#writing', '/contact': '/classic#contact',
 };
 
 const AppContent = () => {
   const { pathname, hash } = useLocation();
+  const chrome = pathname === '/classic' || pathname === '/resume' || pathname.startsWith('/blog/');
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [adminSection, setAdminSection] = useState<string | null>(null);
 
@@ -44,17 +50,22 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-aurora text-white">
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-teal-300 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
-      <Nav onTerminal={() => setTerminalOpen(true)} />
+      {chrome && <Nav onTerminal={() => setTerminalOpen(true)} />}
       <main id="main">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Gateway />} />
+          <Route path="/classic" element={<Home />} />
+          <Route path="/w/recruiter" element={<Recruiter />} />
+          <Route path="/w/designer" element={<Designer />} />
+          <Route path="/w/ai" element={<AIEngineer />} />
+          <Route path="/w/analyst" element={<Analyst />} />
           <Route path="/blog/:slug" element={<Post />} />
           <Route path="/resume" element={<div className="pt-16"><Suspense fallback={null}><Resume /></Suspense></div>} />
           {Object.entries(LEGACY).map(([from, to]) => <Route key={from} path={from} element={<Navigate to={to} replace />} />)}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
+      {chrome && <Footer />}
 
       <AnimatePresence>
         {terminalOpen && (

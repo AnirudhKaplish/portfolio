@@ -12,13 +12,13 @@ const Post: React.FC = () => {
     document.title = `${post.title} | Anirudh Kaplish`;
     return () => { document.title = prev; };
   }, [post]);
-  if (!post) return <Navigate to="/#writing" replace />;
+  if (!post) return <Navigate to="/classic#writing" replace />;
   const idx = POSTS.indexOf(post);
   const next = POSTS[(idx + 1) % POSTS.length];
 
   return (
     <article className="mx-auto max-w-2xl px-5 pt-28 pb-24">
-      <Link to="/#writing" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white"><ArrowLeft size={16} /> All writing</Link>
+      <Link to="/classic#writing" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white"><ArrowLeft size={16} /> All writing</Link>
       <p className="mt-8 font-mono text-xs text-teal-300">{post.date} · {post.readTime} read</p>
       <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight leading-tight">{post.title}</h1>
       <div className="mt-4 flex flex-wrap gap-1.5">{post.tags.map((t) => <span key={t} className="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-gray-300">{t}</span>)}</div>
