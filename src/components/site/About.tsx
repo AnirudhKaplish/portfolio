@@ -9,7 +9,10 @@ const About: React.FC = () => {
   return (
     <Section id="about" eyebrow="01 / About" title="Careful data work, clean engineering.">
       <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10">
-        <p className="text-lg text-gray-300 leading-relaxed">{profile.about}</p>
+        <div className="flex flex-col sm:flex-row gap-6 items-start">
+          <img src={`${import.meta.env.BASE_URL}ani.webp`} alt="Anirudh Kaplish" loading="lazy" className="h-40 w-32 shrink-0 rounded-2xl object-cover object-top bg-[#f1eee7] ring-1 ring-white/10" />
+          <p className="text-lg text-gray-300 leading-relaxed">{profile.about}</p>
+        </div>
         <dl className="grid grid-cols-2 gap-3">
           {(profile.stats || []).map((s: any) => (
             <div key={s.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
