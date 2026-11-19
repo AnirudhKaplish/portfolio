@@ -71,8 +71,13 @@ import { X } from 'lucide-react';
       // FORCE LOGOUT ON LOAD: Strict requirement "Refresh = Logout"
       // This ensures that even if a token exists in storage, we kill it immediately on boot.
       const secureBoot = async () => {
-          await signOut(auth); 
-          await setPersistence(auth, inMemoryPersistence);
+          if (!auth) return;
+          try {
+            await signOut(auth);
+            await setPersistence(auth, inMemoryPersistence);
+          } catch (e) {
+            console.warn('Auth reset skipped', e);
+          }
       };
       secureBoot();
 
