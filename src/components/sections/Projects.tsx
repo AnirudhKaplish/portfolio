@@ -13,7 +13,8 @@ const ProjectImage = ({ project, className }: { project: any, className: string 
       </div>
     );
   }
-  return <img src={project.image} alt={project.title} className={className} loading="lazy" onError={() => setFailed(true)} />;
+  const src = /^https?:/.test(project.image) ? project.image : `${import.meta.env.BASE_URL}${String(project.image).replace(/^\//, '')}`;
+  return <img src={src} alt={project.title} className={className} loading="lazy" onError={() => setFailed(true)} />;
 };
 
 const ProjectCard = ({ project, index, onClick }: { project: any, index: number, onClick: () => void }) => {
@@ -29,10 +30,10 @@ const ProjectCard = ({ project, index, onClick }: { project: any, index: number,
             damping: 20
         }}
         onClick={onClick}
-        className="group relative rounded-xl overflow-hidden border border-white/10 bg-[#0a0f1c] cursor-pointer h-full flex flex-col hover:border-cyan-500/50 transition-colors"
+        className={`group relative rounded-xl overflow-hidden border bg-[#0a0f1c] cursor-pointer h-full flex flex-col hover:border-cyan-500/50 transition-colors ${project.featured ? "border-cyan-500/30 md:col-span-2" : "border-white/10"}`}
     >
         {/* Background Image */}
-        <div className="relative h-56 overflow-hidden">
+        <div className={`relative overflow-hidden ${project.featured ? "h-56 md:h-80" : "h-56"}`}>
             <ProjectImage project={project} className="w-full h-full object-cover object-top opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-[#0a0f1c]/20 to-transparent" />
         </div>
@@ -40,7 +41,12 @@ const ProjectCard = ({ project, index, onClick }: { project: any, index: number,
         {/* Content Preview */}
         <div className="relative z-10 p-6 flex-grow flex flex-col">
              <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
-                 <div className="flex gap-2">
+                 <div className="flex flex-wrap gap-2">
+                     {project.featured && (
+                        <span className="px-2 py-1 text-[10px] font-mono tracking-widest uppercase border border-amber-400 text-amber-300 bg-amber-400/10 rounded backdrop-blur-md">
+                           Featured
+                        </span>
+                     )}
                      <span className={`
                         px-2 py-1 text-[10px] font-mono tracking-widest uppercase border rounded backdrop-blur-md
                         ${project.type === 'research' ? 'border-cyan-500 text-cyan-400 bg-cyan-500/10' : 
@@ -240,7 +246,7 @@ const Projects: React.FC = () => {
 
         {/* Uniform Grid (2 cols on md+) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto pb-10">
-            {projects.map((project, index) => (
+            {[...projects].sort((a: any, b: any) => Number(!!b.featured) - Number(!!a.featured)).map((project, index) => (
                 <ProjectCard 
                     key={project.id} 
                     project={project} 

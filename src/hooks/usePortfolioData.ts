@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { collection, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { PROJECTS, EXTRA_PROJECTS, PROJECT_LINKS, SKILLS, TIMELINE, ROADMAP, PHILOSOPHY, BLOG_POSTS, PROFILE, SKILLS_CATEGORIES } from './data/portfolio';
+import { PROJECTS, SKILLS, TIMELINE, ROADMAP, PHILOSOPHY, BLOG_POSTS, PROFILE, SKILLS_CATEGORIES } from './data/portfolio';
 
 // Generic Hook Factory for Collections
 function useCollectionData(collectionName: string, fallbackData: any[]) {
@@ -37,22 +37,11 @@ function useCollectionData(collectionName: string, fallbackData: any[]) {
 }
 
 // Specific Hooks
-const PROFILE_URL = 'https://github.com/AnirudhKaplish';
-const isProfileOnly = (u?: string) => !u || u.replace(/\/+$/, '').toLowerCase() === PROFILE_URL.toLowerCase();
+// Projects, timeline, roadmap and writings are maintained in src/hooks/data/portfolio.ts
+// (the single source of truth); Firestore is not read for them.
+const useLocalData = (fallbackData: any[]): { data: any[]; loading: boolean; isFallback: boolean } => ({ data: fallbackData, loading: false, isFallback: true });
 
-export const useProjects = () => {
-    const res = useCollectionData('projects', PROJECTS);
-    const merged = res.data.map((p: any) => {
-        const key = Object.keys(PROJECT_LINKS).find(k => String(p.title || '').toLowerCase().includes(k));
-        const out = { ...p, ...(key ? PROJECT_LINKS[key] : {}) };
-        if (isProfileOnly(out.github)) delete out.github; // a bare profile link is not the project's source
-        return out;
-    });
-    EXTRA_PROJECTS.forEach((e: any) => {
-        if (!merged.some((p: any) => String(p.title || '').toLowerCase().includes('qrify'))) merged.push({ ...e });
-    });
-    return { ...res, data: merged };
-};
+export const useProjects = () => useLocalData(PROJECTS);
 
 // Skills might need custom sorting if not done in DB
 export const useSkills = () => useCollectionData('skills', SKILLS);
@@ -60,14 +49,14 @@ export const useSkillCategories = () => useCollectionData('skill_categories', SK
 
 // Timeline needs sorting by Date usually, but for now we trust the DB order or sort client side
 export const useTimeline = () => {
-    const { data, loading, isFallback } = useCollectionData('timeline', TIMELINE);
+    const { data, loading, isFallback } = useLocalData(TIMELINE);
     // Optional: Sort by date descending?
     return { data, loading, isFallback };
 };
 
-export const useRoadmap = () => useCollectionData('roadmap', ROADMAP);
+export const useRoadmap = () => useLocalData(ROADMAP);
 export const usePhilosophy = () => useCollectionData('philosophy', PHILOSOPHY);
-export const useBlogPosts = () => useCollectionData('writings', BLOG_POSTS);
+export const useBlogPosts = () => useLocalData(BLOG_POSTS);
 
 // Profile is a Single Document
 export const useProfile = () => {
@@ -77,7 +66,8 @@ export const useProfile = () => {
     useEffect(() => {
         const unsub = onSnapshot(doc(db, "portfolio", "profile"), (doc) => {
             if (doc.exists()) {
-                setProfile(doc.data());
+                // Keep headline, bio and stats in sync with the repo; take the rest (e.g. social links) from the database
+                setProfile({ ...doc.data(), title: PROFILE.title, titles: PROFILE.titles, bio: PROFILE.bio, about: PROFILE.about, stats: PROFILE.stats });
             }
             setLoading(false);
         }, (error) => {
