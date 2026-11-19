@@ -6,9 +6,9 @@
 
 Building scalable applications, crafting intuitive user experiences, and continuously exploring modern technologies.
 
-🌐 **Live Portfolio:** https://anirudhkaplish.vercel.app
+🌐 **Live Portfolio:** https://anirudhkaplish.github.io/portfolio/
 
-[Portfolio](https://anirudhkaplish.vercel.app) • [GitHub](https://github.com/AnirudhKaplish) • [LinkedIn](https://www.linkedin.com/in/anirudhkaplish/)
+[Portfolio](https://anirudhkaplish.github.io/portfolio/) • [GitHub](https://github.com/AnirudhKaplish) • [LinkedIn](https://www.linkedin.com/in/anirudhkaplish/)
 
 </div>
 
@@ -141,7 +141,7 @@ npm run preview
 
 Visit the deployed portfolio here:
 
-### https://anirudhkaplish.vercel.app
+### https://anirudhkaplish.github.io/portfolio/
 
 ---
 
@@ -174,7 +174,7 @@ Visit the deployed portfolio here:
 ## 🤝 Connect With Me
 
 🌐 Portfolio  
-https://anirudhkaplish.vercel.app
+https://anirudhkaplish.github.io/portfolio/
 
 💻 GitHub  
 https://github.com/AnirudhKaplish

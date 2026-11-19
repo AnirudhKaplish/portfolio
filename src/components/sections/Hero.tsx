@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
         >
           <div className="absolute inset-0 bg-cyan-500/10 blur-[100px] rounded-full"></div>
           <img 
-              src="/logo.png" 
+              src={`${import.meta.env.BASE_URL}logo.png`} 
               alt="Logo" 
               className="w-72 h-72 md:w-[450px] md:h-[450px] object-cover rounded-full relative z-10"
               style={{ maskImage: 'radial-gradient(circle, black 40%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 70%)' }} 
