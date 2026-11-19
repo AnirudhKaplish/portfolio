@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Github, Linkedin, Mail, Copy, Check, MapPin } from 'lucide-react';
 import { useProfile } from '../../hooks/usePortfolioData';
+import PhoneDemo from './PhoneDemo';
 
 const EMAIL = 'anirudh23.dev@gmail.com';
 const TECH = ['React', 'TypeScript', 'Next.js', 'Node.js', 'Python', 'SQL', 'PyTorch', 'Docker', 'Tailwind', 'Firebase', 'FastAPI', 'Tableau'];
@@ -24,7 +25,7 @@ const Hero: React.FC = () => {
   return (
     <section id="top" className="relative pt-28 md:pt-36 pb-10 overflow-hidden">
       <div className="absolute inset-0 bg-grid pointer-events-none" aria-hidden />
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8 grid md:grid-cols-[1.25fr_1fr] gap-12 md:gap-16 items-center">
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8 grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-center">
         <div>
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-teal-300/30 bg-teal-300/5 px-3.5 py-1.5 text-sm text-teal-200">
             <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-teal-300" /></span>
@@ -56,19 +57,9 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.15, duration: 0.6 }} className="relative mx-auto w-full max-w-sm">
-          <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-teal-300/20 via-transparent to-amber-300/10 blur-2xl" aria-hidden />
-          <div className="relative rounded-3xl overflow-hidden bg-[#f1eee7] aspect-[4/5] ring-1 ring-white/10">
-            <img src={`${import.meta.env.BASE_URL}ani.webp`} alt="Portrait of Anirudh Kaplish" className="w-full h-full object-cover object-top" fetchPriority="high" />
-          </div>
-          <div className="absolute -bottom-5 -left-4 rounded-xl border border-white/10 bg-[#0d1117]/95 backdrop-blur px-4 py-3 shadow-xl">
-            <p className="font-mono text-[11px] text-gray-500 uppercase tracking-widest">Studying</p>
-            <p className="text-sm font-medium">B.Tech CSE · VIT Chennai</p>
-          </div>
-          <div className="absolute -top-4 -right-3 rounded-xl border border-white/10 bg-[#0d1117]/95 backdrop-blur px-4 py-3 shadow-xl">
-            <p className="font-mono text-[11px] text-gray-500 uppercase tracking-widest">CGPA</p>
-            <p className="text-lg font-bold text-teal-300">8.09</p>
-          </div>
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.6 }}>
+          <PhoneDemo />
+          <p className="mt-6 text-center font-mono text-xs text-gray-500">Tap an app. It&apos;s a working phone.</p>
         </motion.div>
       </div>
 
