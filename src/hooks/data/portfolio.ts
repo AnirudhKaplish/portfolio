@@ -11,7 +11,7 @@ export const PROFILE = {
   },
   about: "I am a Computer Science undergraduate at VIT Chennai (CGPA 8.09) who builds full-stack applications and data pipelines. I design relational schemas, automate data ingestion, and ship React and Node.js products, and I have applied AI to personalization and screening problems. I am looking for analytics, consulting and software roles where careful data work and clean engineering both matter.",
   stats: [
-    { label: "Projects Built", value: "12+" },
+    { label: "Projects Built", value: "15" },
     { label: "Internships", value: "3" },
     { label: "DSA Problems", value: "170+" },
     { label: "CGPA", value: "8.09" },
@@ -65,6 +65,24 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    "id": "p0",
+    "title": "DeskDeck – Phone-as-Desk-Dashboard",
+    "desc": "Turns an old Android phone into a glanceable desk panel for your PC: live system stats, music, weather, shortcuts, and brightness controls, all laid out in a drag-and-drop editor. Rebuilt with a new Aurora glass design from the MIT-licensed PhoneBox.",
+    "details": [
+      "Android WebView panel plus a .NET 10 agent that streams live CPU, GPU, memory and network data over USB or Wi-Fi.",
+      "122 widgets and 30 ready-made layouts, with a browser-based settings editor and a built-in default Shortcuts page.",
+      "Added laptop and phone brightness sliders, a one-command installer with a progress bar, and a signed release pipeline on GitHub Actions.",
+      "Redesigned the panel, settings editor, icon and demo website with a new Aurora look; credits the original open-source project."
+    ],
+    "tech": ["Kotlin", "C#", ".NET", "JavaScript", "GitHub Actions"],
+    "domain": "Desktop / Android",
+    "featured": true,
+    "type": "product",
+    "image": "projects/deskdeck.webp",
+    "github": "https://github.com/AnirudhKaplish/deskdeck",
+    "link": "https://anirudhkaplish.github.io/deskdeck/"
+  },
+  {
     "id": "p1",
     "title": "SwiftMile – Last-Mile Delivery Management Platform",
     "desc": "A Next.js logistics platform for Indian delivery networks: dynamic rate calculation, zone-level routing, courier dispatch and role-based workspaces for customers, agents and admins.",
@@ -108,7 +126,8 @@ export const PROJECTS = [
     "featured": true,
     "type": "product",
     "image": "projects/voicecart.webp",
-    "github": "https://github.com/AnirudhKaplish/VoiceCart"
+    "github": "https://github.com/AnirudhKaplish/VoiceCart",
+    "link": "https://anirudhkaplish.github.io/VoiceCart/"
   },
   {
     "id": "p3",
@@ -245,7 +264,8 @@ export const PROJECTS = [
     "featured": false,
     "type": "product",
     "image": "projects/redish.webp",
-    "github": "https://github.com/AnirudhKaplish/Re-Dish"
+    "github": "https://github.com/AnirudhKaplish/Re-Dish",
+    "link": "https://anirudhkaplish.github.io/Re-Dish/"
   },
   {
     "id": "p9",
@@ -265,7 +285,8 @@ export const PROJECTS = [
     "featured": false,
     "type": "product",
     "image": "projects/annapoorna.webp",
-    "github": "https://github.com/AnirudhKaplish/Annapoorna"
+    "github": "https://github.com/AnirudhKaplish/Annapoorna",
+    "link": "https://anirudhkaplish.github.io/Annapoorna/"
   },
   {
     "id": "p10",
