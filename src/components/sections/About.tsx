@@ -22,7 +22,7 @@ const ProfileHologram = ({ profile }: { profile: any }) => {
              {/* Image Container */}
              <div className="absolute inset-2 bg-[#0c121e] rounded overflow-hidden z-10">
                  <img 
-                    src="/ani.png"
+                    src={`${import.meta.env.BASE_URL}ani.png`}
                     alt="Anirudh Kaplish"
                     className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 opacity-80 hover:opacity-100 group-hover:scale-105"
                  />

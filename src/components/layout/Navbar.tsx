@@ -53,11 +53,11 @@ const Navbar: React.FC = () => {
     <>
     <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-3 flex justify-between items-center border-b border-white/10 bg-[#050a14]/90 backdrop-blur-md pointer-events-auto">
       {/* Brand / Logo - Forces Full Reload to Reset System State */}
-      <a href="/" className="flex items-center gap-3 group relative z-50">
+      <a href={import.meta.env.BASE_URL} className="flex items-center gap-3 group relative z-50">
         <motion.img 
             initial={{ opacity: 0, rotate: -90 }}
             animate={{ opacity: 1, rotate: 0 }}
-            src="/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Logo" 
             className="w-10 h-10 object-cover drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] group-hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.8)] transition-all rounded-full" 
             style={{ maskImage: 'radial-gradient(circle, black 60%, transparent 100%)', WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 100%)' }} 

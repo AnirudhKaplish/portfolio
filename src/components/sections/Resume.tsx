@@ -11,7 +11,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 import GlitchText from '../GlitchText';
 
 const Resume: React.FC = () => {
-    const resumePath = "/AnirudhResume.pdf";
+    const resumePath = `${import.meta.env.BASE_URL}AnirudhResume.pdf`;
     const [numPages, setNumPages] = useState<number | null>(null);
     const [pageWidth, setPageWidth] = useState(800);
 
