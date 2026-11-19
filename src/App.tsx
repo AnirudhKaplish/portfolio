@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Terminal } from 'lucide-react'
@@ -17,7 +17,7 @@ import Philosophy from './components/sections/Philosophy'
 import Roadmap from './components/sections/Roadmap'
 import Achievements from './components/sections/Achievements'
 import Blog from './components/sections/Blog'
-import Resume from './components/sections/Resume'
+const Resume = lazy(() => import('./components/sections/Resume'))
 import AdminModal from './components/admin/AdminModal'
 
 const AppContent = () => {
@@ -28,6 +28,8 @@ const AppContent = () => {
   const [systemState, setSystemState] = useState<'LANDING' | 'BOOTING' | 'ONLINE'>(
     isHome ? 'LANDING' : 'BOOTING'
   );
+  const introSeen = (() => { try { return sessionStorage.getItem('intro-seen') === '1'; } catch { return false; } })();
+  const skipIntro = () => { try { sessionStorage.setItem('intro-seen', '1'); } catch { /* ignore */ } window.location.reload(); };
   const [isResizing, setIsResizing] = useState(false);
   const [adminSection, setAdminSection] = useState<string | null>(null);
 
@@ -51,6 +53,7 @@ const AppContent = () => {
   };
 
   const handleBootComplete = () => {
+    try { sessionStorage.setItem('intro-seen', '1'); } catch { /* storage unavailable */ }
     setSystemState('ONLINE');
   };
 
@@ -118,11 +121,20 @@ const AppContent = () => {
                     onComplete={handleBootComplete} 
                     onAdminMode={handleAdminMode}
                     onMinimize={windowWidth < 1024 && systemState === 'ONLINE' ? () => setMobileTerminalOpen(false) : undefined}
-                    instant={systemState === 'ONLINE'} 
+                    instant={systemState === 'ONLINE' || introSeen} 
                     isResizing={isResizing} 
                   />
               </div>
           </motion.div>
+      )}
+
+      {systemState === 'BOOTING' && !introSeen && (
+        <button
+          onClick={skipIntro}
+          className="fixed top-4 right-4 z-50 px-3 py-1.5 text-xs font-mono tracking-widest text-gray-300 border border-white/20 rounded hover:bg-white/10 hover:text-white transition-colors"
+        >
+          SKIP INTRO
+        </button>
       )}
 
       {/* Layer 3: Neural Navigation (Home Only) */}
@@ -161,7 +173,7 @@ const AppContent = () => {
                <Route path="/about" element={<MainLayout showNavbar={true}><About /></MainLayout>} />
                <Route path="/skills" element={<MainLayout showNavbar={true}><Skills /></MainLayout>} />
                <Route path="/philosophy" element={<MainLayout showNavbar={true}><Philosophy /></MainLayout>} />
-               <Route path="/resume" element={<MainLayout showNavbar={true}><Resume /></MainLayout>} />
+               <Route path="/resume" element={<MainLayout showNavbar={true}><Suspense fallback={null}><Resume /></Suspense></MainLayout>} />
                <Route path="/roadmap" element={<MainLayout showNavbar={true}><Roadmap /></MainLayout>} />
                <Route path="/projects" element={<MainLayout showNavbar={true}><Projects /></MainLayout>} />
                <Route path="/achievements" element={<MainLayout showNavbar={true}><Achievements /></MainLayout>} />
