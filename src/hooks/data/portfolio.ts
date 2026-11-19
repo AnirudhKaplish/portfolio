@@ -11,7 +11,7 @@ export const PROFILE = {
   },
   about: "I am a Computer Science undergraduate at VIT Chennai (CGPA 8.09) who builds full-stack applications and data pipelines. I design relational schemas, automate data ingestion, and ship React and Node.js products, and I have applied AI to personalization and screening problems. I am looking for analytics, consulting and software roles where careful data work and clean engineering both matter.",
   stats: [
-    { label: "Projects Built", value: "15" },
+    { label: "Projects Built", value: "13" },
     { label: "Internships", value: "3" },
     { label: "DSA Problems", value: "170+" },
     { label: "CGPA", value: "8.09" },
@@ -349,49 +349,6 @@ export const PROJECTS = [
     "type": "module",
     "image": "projects/todo.webp",
     "github": "https://github.com/AnirudhKaplish/to-do-list"
-  },
-  {
-    "id": "p13",
-    "title": "Dhanvantri – Healthcare Management System",
-    "desc": "A digital healthcare platform for managing patient records, appointments and service coordination.",
-    "details": [
-      "Structured data storage for medical records.",
-      "Backend APIs for patient and appointment data.",
-      "Interface workflows designed around healthcare staff."
-    ],
-    "tech": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Backend APIs",
-      "Database"
-    ],
-    "domain": "HealthTech",
-    "featured": false,
-    "type": "product",
-    "image": "",
-    "github": null
-  },
-  {
-    "id": "p14",
-    "title": "Authentication & Dashboard System",
-    "desc": "A reusable module with JWT authentication, protected routes and role-based access control.",
-    "details": [
-      "JWT authentication with protected routes and middleware.",
-      "Role-based access control for different user types.",
-      "Frontend and backend integrated for secure session handling."
-    ],
-    "tech": [
-      "Node.js",
-      "Express.js",
-      "JWT",
-      "React"
-    ],
-    "domain": "Backend / Security",
-    "featured": false,
-    "type": "module",
-    "image": "",
-    "github": null
   }
 ];
 

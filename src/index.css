@@ -1,47 +1,40 @@
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Base Styles (to be expanded later) */
+:root { --accent: #5eead4; --ink: #06080d; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
-    background-color: #050a14;
-    @apply text-white;
-    overflow-x: hidden;
+  background-color: var(--ink);
+  font-family: 'Space Grotesk Variable', system-ui, sans-serif;
+  @apply text-white antialiased;
+  overflow-x: hidden;
 }
+::selection { background: rgba(94, 234, 212, .3); color: #ecfeff; }
+.font-mono { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; }
 
-/* Terminal Scrollbar */
-.terminal-scrollbar::-webkit-scrollbar {
-  width: 6px;
+.bg-aurora {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(94,234,212,.12), transparent 60%),
+    radial-gradient(40rem 30rem at -10% 20%, rgba(251,191,36,.06), transparent 60%),
+    var(--ink);
 }
+.bg-grid {
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%);
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 40s linear infinite; width: max-content; }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } html { scroll-behavior: auto; } }
 
-.terminal-scrollbar::-webkit-scrollbar-track {
-  background: transparent; 
-}
-
-.terminal-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(34, 211, 238, 0.2); 
-  border-radius: 3px;
-}
-
-.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 211, 238, 0.5);
-}
-
-/* Global Custom Scrollbar (Used in Resume & Projects) */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #0c121e;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #1f2937;
-    border-radius: 5px;
-    border: 2px solid #0c121e;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #06b6d4; /* Cyan-500 */
-}
-.custom-scrollbar::-webkit-scrollbar-corner {
-    background: #0c121e;
-}
+.terminal-scrollbar::-webkit-scrollbar { width: 6px; }
+.terminal-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.terminal-scrollbar::-webkit-scrollbar-thumb { background: rgba(34,211,238,.2); border-radius: 3px; }
+.custom-scrollbar::-webkit-scrollbar { width: 10px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #0c121e; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 5px; border: 2px solid #0c121e; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #5eead4; }
