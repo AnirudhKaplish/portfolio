@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { collection, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { PROJECTS, SKILLS, TIMELINE, ROADMAP, PHILOSOPHY, BLOG_POSTS, PROFILE, SKILLS_CATEGORIES } from './data/portfolio';
+import { PROJECTS, EXTRA_PROJECTS, PROJECT_LINKS, SKILLS, TIMELINE, ROADMAP, PHILOSOPHY, BLOG_POSTS, PROFILE, SKILLS_CATEGORIES } from './data/portfolio';
 
 // Generic Hook Factory for Collections
 function useCollectionData(collectionName: string, fallbackData: any[]) {
@@ -37,7 +37,22 @@ function useCollectionData(collectionName: string, fallbackData: any[]) {
 }
 
 // Specific Hooks
-export const useProjects = () => useCollectionData('projects', PROJECTS);
+const PROFILE_URL = 'https://github.com/AnirudhKaplish';
+const isProfileOnly = (u?: string) => !u || u.replace(/\/+$/, '').toLowerCase() === PROFILE_URL.toLowerCase();
+
+export const useProjects = () => {
+    const res = useCollectionData('projects', PROJECTS);
+    const merged = res.data.map((p: any) => {
+        const key = Object.keys(PROJECT_LINKS).find(k => String(p.title || '').toLowerCase().includes(k));
+        const out = { ...p, ...(key ? PROJECT_LINKS[key] : {}) };
+        if (isProfileOnly(out.github)) delete out.github; // a bare profile link is not the project's source
+        return out;
+    });
+    EXTRA_PROJECTS.forEach((e: any) => {
+        if (!merged.some((p: any) => String(p.title || '').toLowerCase().includes('qrify'))) merged.push({ ...e });
+    });
+    return { ...res, data: merged };
+};
 
 // Skills might need custom sorting if not done in DB
 export const useSkills = () => useCollectionData('skills', SKILLS);

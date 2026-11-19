@@ -3,6 +3,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useProjects } from '../../hooks/usePortfolioData';
 import { Github, ExternalLink, Database, X, ChevronRight, Layers } from 'lucide-react';
 
+const ProjectImage = ({ project, className }: { project: any, className: string }) => {
+  const [failed, setFailed] = useState(false);
+  if (!project.image || failed) {
+    const initials = String(project.title || '?').split(/[\s–-]+/).filter(Boolean).slice(0, 2).map((w: string) => w[0]).join('').toUpperCase();
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-900/40 via-[#0a0f1c] to-purple-900/40" role="img" aria-label={project.title}>
+        <span className="font-mono font-black text-6xl text-cyan-400/40 tracking-tighter">{initials}</span>
+      </div>
+    );
+  }
+  return <img src={project.image} alt={project.title} className={className} loading="lazy" onError={() => setFailed(true)} />;
+};
+
 const ProjectCard = ({ project, index, onClick }: { project: any, index: number, onClick: () => void }) => {
   return (
     <motion.div
@@ -20,11 +33,7 @@ const ProjectCard = ({ project, index, onClick }: { project: any, index: number,
     >
         {/* Background Image */}
         <div className="relative h-56 overflow-hidden">
-            <img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full h-full object-cover object-top opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
-            />
+            <ProjectImage project={project} className="w-full h-full object-cover object-top opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-[#0a0f1c]/20 to-transparent" />
         </div>
 
@@ -123,11 +132,7 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
 
                 {/* Hero Image */}
                 <div className="relative h-72">
-                    <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover object-top"
-                    />
+                    <ProjectImage project={project} className="w-full h-full object-cover object-top" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c121e] via-transparent to-transparent" />
                 </div>
 

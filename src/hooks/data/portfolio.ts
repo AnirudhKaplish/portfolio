@@ -1,8 +1,8 @@
 export const PROFILE = {
   name: "Anirudh Kaplish",
-  title: "Tech Enthusiast",
+  title: "Full-Stack Developer",
   titles: ["UI/UX DESIGNER", "DATA SCIENTIST", "SOLUTIONS ARCHITECT", "FULLSTACK DEVELOPER"],
-  bio: "Specializing in Frontend Development, Creative work and Codes.",
+  bio: "Full-stack developer building scalable React and Node.js applications, with a growing focus on AI-powered products.",
   social: {
     github: "https://github.com/AnirudhKaplish",
     linkedin: "https://www.linkedin.com/in/anirudhkaplish/",
@@ -76,7 +76,7 @@ export const PROJECTS = [
     ],
     tech: ["HTML", "CSS", "JavaScript", "Node.js", "Go"],
     domain: "Social Impact / Full Stack",
-    github: "https://github.com/AnirudhKaplish",
+    github: "https://github.com/AnirudhKaplish/Re-Dish",
     featured: true,
     type: "product"
   },
@@ -92,7 +92,7 @@ export const PROJECTS = [
     ],
     tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB"],
     domain: "EdTech / Full Stack",
-    github: "https://github.com/AnirudhKaplish",
+    github: "https://github.com/AnirudhKaplish/CampusHire-Portal",
     featured: true,
     type: "product"
   },
@@ -127,6 +127,33 @@ export const PROJECTS = [
     type: "module"
   }
 ];
+
+export const EXTRA_PROJECTS = [
+  {
+    id: "p5",
+    title: "QRify – Custom QR Code Generator",
+    desc: "A fast, no-signup QR code generator with custom colours, size, caption text and logo upload, plus a night mode. Live on GitHub Pages.",
+    details: [
+      "Built with Next.js and React, exported as a fully static site and deployed through GitHub Actions.",
+      "Live preview updates as you type, with adjustable QR size and separate QR, background and text colours.",
+      "Supports logo upload and a caption under the code, and exports the finished image."
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    domain: "Utility / Frontend",
+    github: "https://github.com/AnirudhKaplish/qrify",
+    link: "https://anirudhkaplish.github.io/qrify/",
+    featured: true,
+    type: "product"
+  }
+];
+
+// Links applied on top of whatever the database returns (matched by title keyword).
+// Projects not listed here keep only the links they already have, minus bare profile links.
+export const PROJECT_LINKS: Record<string, { github?: string; link?: string }> = {
+  "re-dish": { github: "https://github.com/AnirudhKaplish/Re-Dish" },
+  "campus hiring": { github: "https://github.com/AnirudhKaplish/CampusHire-Portal" },
+  "qrify": { github: "https://github.com/AnirudhKaplish/qrify", link: "https://anirudhkaplish.github.io/qrify/" }
+};
 
 export const TIMELINE = [
   {

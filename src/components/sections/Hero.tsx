@@ -12,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
   const { profile } = useProfile();
 
   React.useEffect(() => {
-    document.title = "Anirudh | Portfolio";
+    document.title = "Anirudh Kaplish | Full-Stack Developer Portfolio";
   }, []);
 
   return (
@@ -107,6 +107,15 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
                     INITIATE_PROJECT <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </span>
                 </button>
+
+                <a
+                  href={`${import.meta.env.BASE_URL}AnirudhResume.pdf`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pointer-events-auto px-6 py-4 border border-gray-600 text-gray-200 hover:border-white hover:text-white transition-colors font-mono font-bold"
+                >
+                  DOWNLOAD_RESUME
+                </a>
 
                 <div className="flex gap-6 pointer-events-auto">
                 <a href={profile.social.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
