@@ -16,7 +16,7 @@ const Nav: React.FC<{ onTerminal: () => void }> = ({ onTerminal }) => {
   const [active, setActive] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-  const onHome = pathname === '/';
+  const onHome = pathname === '/classic';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -38,13 +38,13 @@ const Nav: React.FC<{ onTerminal: () => void }> = ({ onTerminal }) => {
   return (
     <header className={`fixed top-0 inset-x-0 z-40 transition-colors ${scrolled || open ? 'bg-[#06080d]/85 backdrop-blur-xl border-b border-white/10' : 'border-b border-transparent'}`}>
       <nav className="mx-auto max-w-6xl h-16 px-5 md:px-8 flex items-center justify-between" aria-label="Main">
-        <Link to="/" className="font-mono font-bold text-lg tracking-tight" onClick={() => setOpen(false)}>
+        <Link to="/" title="Who's looking?" className="font-mono font-bold text-lg tracking-tight" onClick={() => setOpen(false)}>
           <span className="text-teal-300">&lt;</span>AK<span className="text-teal-300"> /&gt;</span>
         </Link>
         <ul className="hidden md:flex items-center gap-1">
           {LINKS.map((l) => (
             <li key={l.id}>
-              <Link to={`/#${l.id}`} className={`px-3 py-2 rounded-md text-sm transition-colors ${active === l.id ? 'text-teal-300' : 'text-gray-400 hover:text-white'}`}>{l.label}</Link>
+              <Link to={`/classic#${l.id}`} className={`px-3 py-2 rounded-md text-sm transition-colors ${active === l.id ? 'text-teal-300' : 'text-gray-400 hover:text-white'}`}>{l.label}</Link>
             </li>
           ))}
         </ul>
@@ -57,7 +57,7 @@ const Nav: React.FC<{ onTerminal: () => void }> = ({ onTerminal }) => {
       {open && (
         <div className="md:hidden px-5 pb-5 flex flex-col gap-1">
           {LINKS.map((l) => (
-            <Link key={l.id} to={`/#${l.id}`} onClick={() => setOpen(false)} className="py-3 text-gray-300 border-b border-white/5">{l.label}</Link>
+            <Link key={l.id} to={`/classic#${l.id}`} onClick={() => setOpen(false)} className="py-3 text-gray-300 border-b border-white/5">{l.label}</Link>
           ))}
           <div className="flex gap-2 pt-3">
             <Link to="/resume" onClick={() => setOpen(false)} className="flex-1 text-center px-4 py-3 rounded-md font-medium bg-teal-300 text-black">Résumé</Link>
