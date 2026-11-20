@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowDown } from 'lucide-react';
 import { useProjects, usePhilosophy } from '../hooks/usePortfolioData';
 import PhoneDemo from '../components/site/PhoneDemo';
 import WorldBar from './WorldBar';
+
+const Gallery3D = lazy(() => import('./Gallery3D'));
+const hasGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
 
 const Designer: React.FC = () => {
   const { data: projects } = useProjects();
@@ -29,7 +32,18 @@ const Designer: React.FC = () => {
         <div><PhoneDemo /></div>
       </section>
 
-      <section id="work" className="relative mx-auto max-w-6xl px-5 py-20 space-y-24">
+      <section id="work" className="relative mx-auto max-w-6xl px-5 py-16">
+        {hasGL && (
+          <>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-purple-300 mb-3">Walk the gallery</p>
+            <Suspense fallback={<div className="h-[78vh] grid place-items-center text-gray-500">Hanging the frames…</div>}><Gallery3D projects={show} /></Suspense>
+            <details className="mt-6 text-sm text-gray-400"><summary className="cursor-pointer hover:text-white">Prefer a plain list?</summary>
+              <ul className="mt-3 space-y-2">{show.map((p: any) => <li key={p.id}><span className="text-white">{p.title.split(' – ')[0]}</span> · {p.desc} {p.link && <a className="text-teal-300 underline" href={p.link} target="_blank" rel="noreferrer">Live</a>} {p.github && <a className="text-gray-300 underline" href={p.github} target="_blank" rel="noreferrer">Code</a>}</li>)}</ul></details>
+          </>
+        )}
+      </section>
+      {!hasGL && (
+      <section className="relative mx-auto max-w-6xl px-5 py-20 space-y-24">
         {show.map((p: any, i: number) => (
           <motion.article key={p.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} className={`grid items-center gap-8 md:grid-cols-2 ${i % 2 ? 'md:[&>*:first-child]:order-2' : ''}`}>
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl"><img src={`${import.meta.env.BASE_URL}${p.image}`} alt={`${p.title} screenshot`} loading="lazy" className="w-full aspect-[16/10] object-cover object-top hover:scale-[1.03] transition-transform duration-700" /></div>
@@ -46,6 +60,7 @@ const Designer: React.FC = () => {
           </motion.article>
         ))}
       </section>
+      )}
       <footer className="relative border-t border-white/10 py-10 text-center text-sm text-gray-500">Want something built? <a className="text-teal-300 underline underline-offset-4" href="mailto:anirudh23.dev@gmail.com">anirudh23.dev@gmail.com</a></footer>
     </div>
   );

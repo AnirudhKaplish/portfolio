@@ -113,6 +113,7 @@ const Recruiter: React.FC = () => {
         <h1 className="font-castle mt-8 text-4xl sm:text-6xl font-bold text-amber-100 drop-shadow-[0_2px_20px_rgba(255,185,56,.45)]">Anirudh Kaplish</h1>
         <p className="mt-3 text-xl italic text-amber-100/80">{profile.title}. Step inside and I&apos;ll show you around.</p>
         <button onClick={() => go('hall')} className="font-castle mt-8 inline-flex items-center gap-2 rounded-full border border-amber-300 px-7 py-3 text-amber-200 hover:bg-amber-300 hover:text-black transition-colors">Begin the tour <ArrowDown size={16} /></button>
+        <div><Link to="/w/castle" className="font-castle mt-4 inline-flex items-center gap-2 rounded-full bg-amber-300 px-7 py-3 font-semibold text-black hover:bg-amber-200">Explore the castle in 3D · free roam</Link></div>
       </Room>
 
       {/* THE HALL */}
