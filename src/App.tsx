@@ -8,6 +8,7 @@ import Footer from './components/site/Footer'
 import Home from './pages/Home'
 import Gateway from './worlds/Gateway'
 import Recruiter from './worlds/Recruiter'
+import RecruiterPlain from './worlds/RecruiterPlain'
 import Designer from './worlds/Designer'
 import AIEngineer from './worlds/AIEngineer'
 import Analyst from './worlds/Analyst'
@@ -56,6 +57,7 @@ const AppContent = () => {
           <Route path="/" element={<Gateway />} />
           <Route path="/classic" element={<Home />} />
           <Route path="/w/recruiter" element={<Recruiter />} />
+          <Route path="/w/recruiter-plain" element={<RecruiterPlain />} />
           <Route path="/w/designer" element={<Designer />} />
           <Route path="/w/ai" element={<AIEngineer />} />
           <Route path="/w/analyst" element={<Analyst />} />
