@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Gateway from './worlds/Gateway'
 import Recruiter from './worlds/Recruiter'
 import RecruiterPlain from './worlds/RecruiterPlain'
+const CastleWorld = lazy(() => import('./worlds/CastleWorld'))
 import Designer from './worlds/Designer'
 import AIEngineer from './worlds/AIEngineer'
 import Analyst from './worlds/Analyst'
@@ -57,6 +58,7 @@ const AppContent = () => {
           <Route path="/" element={<Gateway />} />
           <Route path="/classic" element={<Home />} />
           <Route path="/w/recruiter" element={<Recruiter />} />
+          <Route path="/w/castle" element={<Suspense fallback={null}><CastleWorld /></Suspense>} />
           <Route path="/w/recruiter-plain" element={<RecruiterPlain />} />
           <Route path="/w/designer" element={<Designer />} />
           <Route path="/w/ai" element={<AIEngineer />} />
